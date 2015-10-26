@@ -122,6 +122,7 @@
 		void init (FilterConfig config) throws ServletException;
 		void destroy ();
 		void doFilter (ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException;
+	Фильтры могут использоваться для кэширования и сжатия контента, логирования и аудита, преобразования изображений, аутентификации входящих реквестов, XSL трансформации XML контента, локализации реквеста и респонса и т.д. Фильтра - это модифицированная версия паттерна "Цепочка обязанностей". Если необходимо модифицировать реквест или респонс в цепочке можно испозовать Декоратор.
 
 
 

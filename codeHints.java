@@ -404,6 +404,17 @@ public class Fibonacci implements Generator<Integer> {
 }
 
 
+//To copy an array to another array:
+String[] array1 = {"a", "b", "c"};
+String[] array2 = new String[2] ;
+java.lang.System.arraycopy(array1,0,array2,0,2);
+
+//convert an array to a list
+List list = java.util.Arrays.asList(array2);
+System.out.println(list);//prints [a, b]
+//convert the list back to an array
+String[] array3 = (String[])list.toArray(new String[0]); 
+
 
 
 
