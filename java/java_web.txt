@@ -145,6 +145,30 @@
 
 	Неявные объекты (implicit objects) - это объекты, автоматически доступные как часть стандарта JSP без их специального объявления или импорта. Эти объекты, список которых представлен в таблице, можно использовать в коде JSP (request, response, out, pageContext, session, application, confit, page, exception)
 
+	Your JSP generated servlet can extend your own servlet with the directive:
+		<%@ page extends=”com.CRMServlet”%> 
+
+	How will you perform a browser redirection from a JSP page?
+		<% response.sendRedirect(“http://www.someAbsoluteAddess.com”); %>
+	or you can alter the location HTTP header attribute as follows:
+		<%
+ 			response.setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY);
+ 			response.setHeader(“Location”, “/someNewPath/index.html”);
+		%>
+	How do you prevent the HTML output of your JSP page being cached?
+		<%
+		 response.setHeader(“Cache-Control”, “no=store”); //HTTP 1.1
+		 response.setDateHeader(“Expires”, 0);
+		%>
+	You can invoke a Servlet from a JSP through the jsp:include and jsp:forward action tags.
+		<jsp:include page=”/servlet/MyServlet” flush=”true” />
+	 How do you forward a request to another resource (e.g. another Servlet) from within your JSP? 
+	 	<jsp:forward page=”/anotherPage.jsp” /> 
+	 You can prevent the creation of useless sessions with the attribute “session” of the page directive.
+		<%@ page session=”false” %>
+
+	Static include <%@ include %> определяет один сервлет на стадии компиляции. Dynamic include <jsp:include …..> компилируется в отдельные сервлеты.
+
 
 
 
@@ -193,4 +217,18 @@
 	JSTL позволяет не использовать java код на jsp страницах. В JSTL используется expression language для упрощения доступа к данным, хранящимся в различных областях видимости (page, request, session, application ).
 	Основные jstl-теги: out,set,remove,if,choose,redirect, import, forEach итд.
 
+	JSTL состоит и 4 основных библиотек тегов:
+		- Core Tag Library (циклы, if, input)
+		- Formattin/I18n (парсинг даты)
+		- XML Tag Library (для доступа к XML элементам)
+		- Database Tag Library (для запросов к бд) <sql:query var=”emps” sql=”SELECT * FROM Employee”>
+
 	Есть методы doStartTag(), doEndTag(), doInitBody(), doAfterBody(), которые запускаются при срабатывании соответствующего события. В них заключается обработка данных, переданных в тег, и вывод результата. Неободимо расширить класс TagSupport и переопределить его методы.
+
+
+Prohibit caching of application pages by inserting the following lines in your pages:
+ <meta HTTP-EQUIV=”pragma” content=”no-cache” />
+ <meta HTTP-EQUIV=”Expires” content=”-1” /> 
+
+
+
