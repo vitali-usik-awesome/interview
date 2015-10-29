@@ -415,6 +415,6 @@ System.out.println(list);//prints [a, b]
 //convert the list back to an array
 String[] array3 = (String[])list.toArray(new String[0]); 
 
-
+ String emailRegex = “(\\w+)@(\\w+\\.)(\\w+)(\\.\\w+)*”;
 
 
