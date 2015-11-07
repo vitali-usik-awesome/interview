@@ -3,6 +3,7 @@
 * (equals - сравнение по ссылке по умолчанию, hashcode - адресс в мамяти - http://habrahabr.ru/post/168195/)
 */
     @Override
+    
     public int hashCode() {
         final int prime = 31;
         int result = 1;
